@@ -4,7 +4,7 @@ from databaseCalls.dbComands import DbCommands
 class Menu(object):
     #Opitions menu class
     def __init__(self):
-        self.db_commands = DbCommands()
+        self.db_cmd = DbCommands()
 
     def start(self):
         #Start Menu
@@ -31,15 +31,15 @@ class Menu(object):
             if cmd  == 0:
                 sys.exit()#Exits Program
             elif cmd == 1:
-                self.art_reg()
+                self._art_reg()
             elif cmd == 2:
-                self.prod_reg()
+                self._prod_reg()
             elif cmd == 3:
-                self.update_stk()
+                self._update_stk()
             elif cmd == 4:
-                self.sell()
+                self._sell()
             elif cmd == 5:
-                self.sale_reg()
+                self._sale_reg()
             else:#invalid command
                 print("***COMANDO INVÁLIDO!!!***")
                 self.start()
@@ -49,7 +49,8 @@ class Menu(object):
             print("***SOMENTE NUMEROS!!!***")
             self.start()
     
-    def art_reg(self):#artisan register
+    #Artisan Register
+    def _art_reg(self):
         #Start Menu
         print("======================================")
         print("--------|Cadastro De Artesã(o)|-------")
@@ -68,26 +69,40 @@ class Menu(object):
             if cmd  == 0:
                 sys.exit()#Exits Program
             elif cmd == 1:
-                pass
+                self.db_cmd.list_artisans()
+                input("pressione enter para sair...")
+                sys.exit()
             elif cmd == 2:
-                pass
+                self._add_art()
+                input("pressione enter para sair...")
+                sys.exit()
             else:#invalid command
                 print("***COMANDO INVÁLIDO!!!***")
-                self.start()
+                self._art_reg()
         except Exception as e:
-            #invalid command format
             print(e)
-            print("***SOMENTE NUMEROS!!!***")
-            self.start()
+            print("***ERRO***")
+            self._art_reg()
 
-    def prod_reg(self):#product register
+    def _add_art(self):
+        print("======================================")
+        print("---------|Adicionar Artesã(o)|--------")
+        print("======================================")
+        print("--------------------------------------")
+        cpf = input("CPF da(o) artesã(o): ")
+        nome = input("Nome da(o) artesã(o): ")
+        contato = input("Contato da(o) artesã(o): ")
+        self.db_cmd.add_artisan(cpf, nome, contato)
+
+
+    def _prod_reg(self):#product register
         pass
 
-    def update_stk(self):#update stock
+    def _update_stk(self):#update stock
         pass
 
-    def sell(self):#sell an item
+    def _sell(self):#sell an item
         pass
 
-    def sale_reg(self):#sale register
+    def _sale_reg(self):#sale register
         pass
