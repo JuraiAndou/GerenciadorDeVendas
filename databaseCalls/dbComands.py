@@ -5,8 +5,12 @@ class DbCommands(object):
         pass
 
     #Artisan Register
-    def list_artisans():
-        pass
+    def list_artisans(self):
+        artDAO = ArtDAO()
+        artisans = artDAO.list()
+        for a in artisans:
+            print("*** CPF: "+ str(a.cpf) + " - Nome: " + a.name + " - Contato: " + a.contact + " ***")
+        print("*** " + str(len(artisans)) + " cliente(s) cadastrado(s) ***")
 
     def add_artisan(self, cpf, nome, contato):
         artDAO = ArtDAO()
