@@ -49,6 +49,7 @@ class Menu(object):
             print("***SOMENTE NUMEROS!!!***")
             self.start()
     
+#----------------------------------------------------------------------------
     #Artisan Register
     def _art_reg(self):
         #Start Menu
@@ -94,15 +95,57 @@ class Menu(object):
         contato = input("Contato da(o) artesã(o): ")
         self.db_cmd.add_artisan(cpf, nome, contato)
 
-
+#----------------------------------------------------------------------------
+    #Product register
     def _prod_reg(self):#product register
+        #Start Menu
+        print("======================================")
+        print("--------|Cadastro De Produtos|--------")
+        print("======================================")
+        print("--------------------------------------")
+        print("[1]\tListar Produtos")
+        print("--------------------------------------")
+        print("[2]\tCadastrar Produto")
+        print("--------------------------------------")
+        print("[3]\tExcluir Produto")
+        print("--------------------------------------")
+        print("[0]\tSair")
+        print("--------------------------------------")
+        try :
+            cmd = int(input(":"))#gets user input
+
+            #Tests for commands
+            if cmd  == 0:
+                sys.exit()#Exits Program
+            elif cmd == 1:
+                pass
+            elif cmd == 2:
+                pass
+            elif cmd == 3:
+                pass
+            else:#invalid command
+                pass
+        except Exception as e:
+            print(e)
+            print("***ERRO***")
+            self._art_reg()
+
+    def _add_prod():
+        pass
+    def _del_prod():
         pass
 
+#----------------------------------------------------------------------------
+    #Update Stock
     def _update_stk(self):#update stock
         pass
 
+#----------------------------------------------------------------------------
+    #Sell Product
     def _sell(self):#sell an item
         pass
 
+#----------------------------------------------------------------------------
+    #Sale Register
     def _sale_reg(self):#sale register
         pass
